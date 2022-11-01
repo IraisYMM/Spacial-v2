@@ -75,18 +75,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameScore = 0
         
         self.physicsWorld.contactDelegate = self //
-        for i in 0...1{
-            let background = SKSpriteNode(imageNamed: "Background")//fondo
-            background.size = self.size
-            background.anchorPoint = CGPoint(x: 0.5, y: 0)
-            background.position = CGPoint(x: self.size.width/2,
-                                          y: self.size.height*CGFloat(i))
-            background.zPosition = 0
-            background.name = "Background"
-            self.addChild(background)
-        }
+        
+        let background = SKSpriteNode(imageNamed: "Background")//fondo
+        background.size = self.size
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        background.zPosition = 0
+        self.addChild(background)
+        
         //   let player = SKSpriteNode(imageNamed: "PlayerShip")//jugador principal
-        player.setScale(0.7)
+        player.setScale(3)
         player.position = CGPoint(x: self.size.width/2, y: 0 - player.size.height)
         player.zPosition = 2
         player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
@@ -120,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // para dar play
         
-        tapToStartLabel.text = "PLAY"
+        tapToStartLabel.text = "Play"
         tapToStartLabel.fontSize = 250
         tapToStartLabel.fontColor = SKColor.yellow
         tapToStartLabel.zPosition = 1
@@ -131,30 +128,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let fadeInAction = SKAction.fadeIn(withDuration: 0.3)
         tapToStartLabel.run(fadeInAction)
     }
-    
-    var lastupdateTime: TimeInterval = 0
-    var deltaFrameTime : TimeInterval = 0
-    var amountToMovePerSecond: CGFloat = 600.0
-    
-    override func update(_ currentTime: TimeInterval) {
-        if lastUpdateTime == 0{
-            lastUpdateTime = currentTime
-        }else{
-            deltaFrameTime = currentTime - lastUpdateTime
-            lastUpdateTime = currentTime
-        }
-        let amountToMoveBackground = amountToMovePerSecond * CGFloat(deltaFrameTime)
-            self.enumerateChildNodes(withName: "Background"){background, stop in
-                
-                if self.currentGameState == gameState.inGame{
-                    background.position.y -= amountToMoveBackground
-                }
-                if background.position.y < -self.size.height{
-                    background.position.y += self.size.height*2
-                }
-            }
-        }
-        
     
         func startGame(){
             currentGameState = gameState.inGame
@@ -295,7 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let explosion = SKSpriteNode(imageNamed: "Explosion")
             explosion.position = spawnPosition
             explosion.zPosition = 3
-            explosion.setScale(1)
+            explosion.setScale(3)
             self.addChild(explosion)
             
             let scaleIn = SKAction.scale(by: 1, duration: 0.1)
@@ -343,7 +316,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func fireBullet(){
         let bullet = SKSpriteNode(imageNamed: "Bullet")
         bullet.name = "Bullet"
-        bullet.setScale(0.3)
+        bullet.setScale(3)
         bullet.position = player.position
         bullet.zPosition = 1
         bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
@@ -369,7 +342,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let enemy = SKSpriteNode(imageNamed: "Enemigo")
         enemy.name = "Enemy"
-        enemy.setScale(0.4)
+        enemy.setScale(3)
         enemy.position = startPoint
         enemy.zPosition = 2
         enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
