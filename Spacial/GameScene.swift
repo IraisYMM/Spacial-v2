@@ -128,6 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let fadeInAction = SKAction.fadeIn(withDuration: 0.3)
         tapToStartLabel.run(fadeInAction)
     }
+    
         func startGame(){
             currentGameState = gameState.inGame
             let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
@@ -139,7 +140,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let startLevelAction = SKAction.run(startNewLavel)
             let startGameSequence = SKAction.sequence([moveShipOntoScreenAction, startLevelAction])
             player.run(startGameSequence)
-            
         }
     
     func pause(){
@@ -281,7 +281,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
             
         
-    
+    //jsjsjs
     
     //FUNCION PARA JUGADOR ENEMIGO
     func startNewLavel(){
