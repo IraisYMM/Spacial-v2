@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "20.png",
+      "filename" : "Fondo de bullet eliminado.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "40.png",
+      "filename" : "Fondo de bullet eliminado 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "60.png",
+      "filename" : "Fondo de bullet eliminado 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
